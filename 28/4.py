@@ -1,4 +1,6 @@
 def MadMax(N, Tele):
+    if N == 1:
+        return Tele;
     sorted_tele = bubble_sort(Tele)
     middle_index = N // 2
     arr = []
