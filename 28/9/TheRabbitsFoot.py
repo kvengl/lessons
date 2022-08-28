@@ -62,7 +62,8 @@ def get_original_by_matrix(matrix):
     original = ""
     for i in range(len(matrix)):
         for j in range(len(matrix[i])):
-            original += matrix[i][j]
+            if matrix[i][j] != " ":
+                original += matrix[i][j]
     return original
 
 
@@ -101,3 +102,4 @@ def ceil(n):
 
 def floor(n):
     return int(n // 1)
+
