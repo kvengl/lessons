@@ -20,7 +20,7 @@ def decode(s):
 
     list_without_spaces = s.split()
     for i in range(len(list_without_spaces)):
-        while len(list_without_spaces[i]) < col_len:
+        while len(list_without_spaces[i]) < row_len:
             list_without_spaces[i] += " "
     new_s = "".join(list_without_spaces)
 
@@ -48,10 +48,12 @@ def calc_matrix_size(N):
 
 def get_cipher_by_matrix(matrix):
     cipher = ""
-    for i in range(len(matrix)):
-        for j in range(len(matrix[i])):
-            cipher += matrix[j][i]
-            if j == len(matrix[i]) - 1 and i != len(matrix) - 1:
+    if len(matrix) == 0:
+        return cipher
+    for j in range(len(matrix[0])):
+        for i in range(len(matrix)):
+            cipher += matrix[i][j]
+            if i == len(matrix) - 1 and j != len(matrix[0]) - 1:
                 cipher += " "
     return cipher
 
