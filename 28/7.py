@@ -16,18 +16,42 @@ def split_by_space(s):
     return words
 
 
+def split_word_by_width(word, width):
+    res = []
+    part = ""
+    for i in range(len(word)):
+        if i % width == 0 and i != 0:
+            res.append(part)
+            part = ""
+        part += word[i]
+    if part != "":
+        res.append(part)
+    return res
+
+
 def split_words_by_width(words, width):
+    if width == 0:
+        return []
     new_words = []
-    new_word = words[0]
-    for i in range(1, len(words)):
+    new_word = ""
+    for i in range(0, len(words)):
+        is_first = i == 0
+        add_to_len = 0 if is_first else 1
+        prefix = "" if is_first else " "
+
         word = words[i]
-        if len(new_word) + len(word) + 1 <= width:
-            new_word += " " + word
+        if len(new_word) + len(word) + add_to_len <= width:
+            new_word += prefix + word
+        elif len(word) > width:
+            word_parts = split_word_by_width(word, width)
+            for part in word_parts:
+                new_words.append(part)
         else:
             new_words.append(new_word)
             new_word = word
     if new_word != '':
         new_words.append(new_word)
+
     return new_words
 
 
