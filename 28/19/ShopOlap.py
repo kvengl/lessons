@@ -6,8 +6,8 @@ def ShopOLAP(N, items):
         if good not in goods:
             goods[good] = 0
         goods[good] += count
+    sorted_goods = sorted(goods.items(), key=lambda item: (-item[1], item[0]))
     arr = []
-    for good in goods:
-        arr.append(f'{good} {goods[good]}')
-    sorted_arr = sorted(arr)
-    return sorted_arr
+    for good in sorted_goods:
+        arr.append(f'{good[0]} {good[1]}')
+    return arr
