@@ -1,6 +1,5 @@
 def MisterRobot(N, data):
-    start_index = 2
-    for i in range(start_index, N):
+    for i in range(2, N):
         code = data[i - 2], data[i - 1], data[i]
         if is_sorted_by_asc(code):
             continue
